@@ -19,6 +19,18 @@ Región Centro Oriente,15,Boyacá,15.832,Tununguá
 - **SqlBulkCopy** para inserciones masivas de ciudades.
 
 ## 📌 Esquema de Base de Datos
+
+### Creación del esquema `TERRITORIAL`
+Antes de crear las tablas, asegúrate de que el esquema `TERRITORIAL` exista en la base de datos. Si no existe, créalo con el siguiente comando:
+
+```sql
+CREATE SCHEMA TERRITORIAL;
+GO
+```
+
+### Creación de las tablas `STATES` y `CITIES`
+A continuación, se presentan las sentencias SQL para crear las tablas que almacenarán los departamentos y municipios:
+
 ```sql
 CREATE TABLE TERRITORIAL.STATES (
     StateId     UNIQUEIDENTIFIER DEFAULT (NEWID()) NOT NULL,
