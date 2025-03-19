@@ -2,6 +2,35 @@
 
 Este proyecto realiza la carga de departamentos y ciudades de Colombia a una base de datos SQL Server a partir de un archivo CSV. Utiliza C# con CsvHelper para leer los datos y SqlBulkCopy para insertar eficientemente las ciudades.
 
+## Fuente de Datos
+
+Este proyecto utiliza información pública proporcionada por el **Departamento Administrativo Nacional de Estadística (DANE)** y el **Ministerio de Tecnologías de la Información y las Comunicaciones (MINTIC)** de Colombia. Los datos corresponden a la división político-administrativa del país e incluyen la relación entre departamentos y municipios.
+
+La información se obtiene del conjunto de datos titulado **"Departamentos y municipios de Colombia"**, disponible en la plataforma de datos abiertos del gobierno colombiano:
+
+🔗 **[Departamentos y municipios de Colombia](https://www.datos.gov.co/d/xdk5-pm3f)**
+
+### Detalles del conjunto de datos:
+- **Última actualización**: 20 de abril de 2024
+- **Fuente**: Departamento Administrativo Nacional de Estadística (DANE)
+- **Propietario**: Ministerio de Tecnologías de la Información y las Comunicaciones (MINTIC)
+- **Frecuencia de actualización**: Anual
+- **Licencia**: [Creative Commons Attribution | Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
+
+### Estructura de los datos:
+El conjunto de datos contiene **1,123 filas** y **5 columnas**, organizadas de la siguiente manera:
+
+| Columna                           | Descripción                                  | Tipo de Dato |
+|------------------------------------|----------------------------------------------|-------------|
+| **REGION**                         | Nombre de la región                         | Texto       |
+| **CÓDIGO DANE DEL DEPARTAMENTO**   | Código DANE del departamento                | Número      |
+| **DEPARTAMENTO**                   | Nombre del departamento                     | Texto       |
+| **CÓDIGO DANE DEL MUNICIPIO**       | Código DANE del municipio                   | Número      |
+| **MUNICIPIO**                      | Nombre del municipio                        | Texto       |
+
+Este código permite la transformación de estos datos en una estructura normalizada dentro de una base de datos SQL Server, almacenando los departamentos en la tabla `TERRITORIAL.STATES` y los municipios en `TERRITORIAL.CITIES`, asegurando la integridad y facilitando futuras consultas.
+
+
 ## 📂 Estructura del CSV
 El archivo CSV debe contener los siguientes campos:
 
@@ -73,5 +102,8 @@ CREATE TABLE TERRITORIAL.CITIES (
 - Se asegura que no haya duplicados mediante restricciones `UNIQUE` en `StateCode` y `CityCode`.
 - Se utiliza `GUID` para los identificadores primarios.
 
-¡Carga de datos completada con éxito! 🎉
+
+
+
+
 
